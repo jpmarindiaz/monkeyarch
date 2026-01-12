@@ -1,0 +1,46 @@
+[package]
+name = "monkeyarch"
+version = "0.1.0"
+edition = "2021"
+description = "Lightweight web-based file manager for Raspberry Pi"
+license = "MIT"
+
+[dependencies]
+# Web framework
+axum = { version = "0.7", features = ["multipart"] }
+tokio = { version = "1", features = ["rt-multi-thread", "fs", "macros", "signal", "io-util"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace", "limit"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Configuration
+config = "0.14"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+thiserror = "1"
+mime_guess = "2"
+chrono = { version = "0.4", features = ["serde"] }
+
+# Embedding static files
+rust-embed = "8"
+
+# For streaming file operations
+futures = "0.3"
+tokio-util = { version = "0.7", features = ["io"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

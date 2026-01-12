@@ -1,0 +1,31 @@
+# Monkeyarch Configuration
+# Copy this file to config.toml and adjust as needed
+
+# Root directory for file operations (MUST be an absolute path)
+# All file operations are restricted to this directory.
+#
+# Examples:
+#   root_directory = "/home/pi/media"           # Local folder
+#   root_directory = "/media/pi/SDCARD"         # External SD card (auto-mounted)
+#   root_directory = "/mnt/usb"                 # USB drive (manual mount)
+#
+# The directory must exist before starting the server.
+# For external storage, ensure it's mounted before starting monkeyarch.
+root_directory = "/home/pi/media"
+
+# Network binding
+bind_address = "0.0.0.0"
+port = 8000
+
+# Maximum upload size in bytes (100 MB default)
+max_upload_size = 104857600
+
+# Enable/disable delete operations
+enable_delete = true
+
+# External static files directory (optional)
+# If set, serves frontend from this directory instead of embedded files.
+# Useful for development - edit HTML/CSS/JS without recompiling.
+# If not set or directory doesn't exist, uses embedded assets.
+#
+# static_directory = "/path/to/frontend"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>File Manager</h1>
+        <nav id="breadcrumbs"></nav>
+    </header>
+
+    <main>
+        <div id="toolbar">
+            <button id="btn-upload" type="button">Upload</button>
+            <button id="btn-mkdir" type="button">New Folder</button>
+        </div>
+
+        <div id="file-list"></div>
+    </main>
+
+    <!-- Upload Modal -->
+    <dialog id="upload-dialog">
+        <h2>Upload Files</h2>
+        <form id="upload-form">
+            <input type="file" id="file-input" multiple accept="audio/mpeg,image/*">
+            <label>
+                <input type="checkbox" id="upload-overwrite"> Overwrite existing files
+            </label>
+            <progress id="upload-progress" value="0" max="100"></progress>
+            <div class="dialog-buttons">
+                <button type="submit">Upload</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- New Folder Modal -->
+    <dialog id="mkdir-dialog">
+        <h2>New Folder</h2>
+        <form id="mkdir-form">
+            <input type="text" id="mkdir-name" placeholder="Folder name" required>
+            <div class="dialog-buttons">
+                <button type="submit">Create</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Rename Modal -->
+    <dialog id="rename-dialog">
+        <h2>Rename</h2>
+        <form id="rename-form">
+            <input type="text" id="rename-name" placeholder="New name" required>
+            <input type="hidden" id="rename-original">
+            <div class="dialog-buttons">
+                <button type="submit">Rename</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Delete Confirmation -->
+    <dialog id="delete-dialog">
+        <h2>Delete</h2>
+        <p id="delete-message"></p>
+        <label id="delete-recursive-label">
+            <input type="checkbox" id="delete-recursive"> Delete all contents
+        </label>
+        <input type="hidden" id="delete-path">
+        <div class="dialog-buttons">
+            <button type="button" id="delete-confirm" class="danger">Delete</button>
+            <button type="button" class="cancel">Cancel</button>
+        </div>
+    </dialog>
+
+    <!-- Error Toast -->
+    <div id="toast" class="hidden"></div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

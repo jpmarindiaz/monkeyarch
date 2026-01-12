@@ -1,0 +1,27 @@
+[Unit]
+Description=Monkeyarch File Manager
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi
+ExecStart=/usr/local/bin/monkeyarch
+Restart=on-failure
+RestartSec=5s
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/media
+PrivateTmp=yes
+
+# Environment (or use config.toml)
+Environment=MONKEYARCH_ROOT_DIRECTORY=/home/pi/media
+Environment=MONKEYARCH_PORT=8000
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target

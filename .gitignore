@@ -1,0 +1,33 @@
+# Build artifacts
+/target/
+debug/
+*.pdb
+
+# Cargo
+Cargo.lock
+
+# Config (contains local settings)
+config.toml
+
+# Logs
+*.log
+
+# Development files
+/dev/
+/tmp/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.orig
